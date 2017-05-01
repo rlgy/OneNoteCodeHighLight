@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<customUI xmlns="http://schemas.microsoft.com/office/2006/01/customui" loadImage="GetImage">
+  <ribbon>
+    <tabs>
+      <tab idMso="TabInsert">
+        <group id="groupHighLightCode" label="HighLightCode">
+          <button id="buttonInsertCode" label="插入代码" size="large"
+                  screentip="插入代码"
+                  onAction="onStart" image="HelloWorld.png" />
+        </group>
+      </tab>
+    </tabs>    
+  </ribbon>
+</customUI>
