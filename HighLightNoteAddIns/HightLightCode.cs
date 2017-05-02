@@ -24,7 +24,7 @@ namespace HighLightNoteAddIns
 
     //{B2727A93-9C8E-412B-B6E6-4C836B358AFF}
     [ComVisible(true)]
-    [Guid("D5ECCD00-CF2D-409B-B65A-BDBACB9F21DB"), ProgId("HighLightNoteAddIns")]
+    [Guid("D5ECCD00-CF2D-409B-B65A-BDBACB9F21DB"), ProgId("HighLightNote")]
     public class HighLightCode : IDTExtensibility2, IRibbonExtensibility
     {
 
@@ -105,7 +105,7 @@ namespace HighLightNoteAddIns
         public IStream GetImage(string imageName)
         {
             MemoryStream mem = new MemoryStream();
-            Properties.Resources.HelloWorld.Save(mem, ImageFormat.Png);
+            Properties.Resources.Logo.Save(mem, ImageFormat.Png);
             return new CCOMStreamWrapper(mem);
         }
 

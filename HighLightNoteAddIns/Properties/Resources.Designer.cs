@@ -63,9 +63,9 @@ namespace HighLightNoteAddIns.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap HelloWorld {
+        internal static System.Drawing.Bitmap Logo {
             get {
-                object obj = ResourceManager.GetObject("HelloWorld", resourceCulture);
+                object obj = ResourceManager.GetObject("Logo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -76,10 +76,10 @@ namespace HighLightNoteAddIns.Properties {
         ///  &lt;ribbon&gt;
         ///    &lt;tabs&gt;
         ///      &lt;tab idMso=&quot;TabInsert&quot;&gt;
-        ///        &lt;group id=&quot;groupHighLightCode&quot; label=&quot;HighLightCode&quot;&gt;
+        ///        &lt;group id=&quot;groupHighLightCode&quot; label=&quot;&quot;&gt;
         ///          &lt;button id=&quot;buttonInsertCode&quot; label=&quot;插入代码&quot; size=&quot;large&quot;
         ///                  screentip=&quot;插入代码&quot;
-        ///                  onAction=&quot;onStart&quot; image=&quot;HelloWorld.png&quot; /&gt;
+        ///                  onAction=&quot;onStart&quot; image=&quot;Logo.png&quot; /&gt;
         ///        &lt;/group&gt;
         ///      &lt;/tab&gt;
         ///    &lt;/tabs&gt;    

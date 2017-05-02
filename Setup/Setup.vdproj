@@ -4,9 +4,9 @@
 "ProjectType" = "8:{978C614F-708E-4E1A-B201-565925725DBA}"
 "IsWebType" = "8:FALSE"
 "ProjectName" = "8:Setup"
-"LanguageId" = "3:1033"
-"CodePage" = "3:1252"
-"UILanguageId" = "3:1033"
+"LanguageId" = "3:2052"
+"CodePage" = "3:936"
+"UILanguageId" = "3:2052"
 "SccProjectName" = "8:"
 "SccLocalPath" = "8:"
 "SccAuxPath" = "8:"
@@ -148,13 +148,13 @@
         "Entry"
         {
         "MsmKey" = "8:_E545CD4B3215FA16ADD3F08325CD5D74"
-        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
+        "OwnerKey" = "8:_2427AC79ADAA4F929E6625B015132B4E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_E545CD4B3215FA16ADD3F08325CD5D74"
-        "OwnerKey" = "8:_2427AC79ADAA4F929E6625B015132B4E"
+        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -171,8 +171,14 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_FD0C4B5AEC444414A54658330E5F91CB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E545CD4B3215FA16ADD3F08325CD5D74"
+        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -190,7 +196,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
+        "OwnerKey" = "8:_E545CD4B3215FA16ADD3F08325CD5D74"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -802,6 +808,26 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_FD0C4B5AEC444414A54658330E5F91CB"
+            {
+            "SourcePath" = "8:D:\\Pictures\\ico\\zend\\self.ico"
+            "TargetName" = "8:self.ico"
+            "Tag" = "8:"
+            "Folder" = "8:_76DE0C3E4C3C41398EBF2960C9F81C36"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
         }
         "FileType"
         {
@@ -950,22 +976,22 @@
         }
         "MsiBootstrapper"
         {
-        "LangId" = "3:1033"
+        "LangId" = "3:2052"
         "RequiresElevation" = "11:FALSE"
         }
         "Product"
         {
         "Name" = "8:VanillaAddIn"
-        "ProductName" = "8:VanillaAddIn"
-        "ProductCode" = "8:{94B72EF8-A523-4ECB-8AC8-82ED8A18362B}"
-        "PackageCode" = "8:{33D92157-E411-467F-AB78-74AC707A878B}"
+        "ProductName" = "8:HighLightNote"
+        "ProductCode" = "8:{7F9BDBF9-BE92-4343-A3B2-549F676D25B8}"
+        "PackageCode" = "8:{E02D4EDB-14EA-42DC-AA9E-2F740DF5B857}"
         "UpgradeCode" = "8:{0025873C-20C5-48D6-A93A-FBD3891A9233}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:0.2.0"
+        "ProductVersion" = "8:1.0.0"
         "Manufacturer" = "8:Microsoft"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -975,7 +1001,7 @@
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
-        "ARPPRODUCTICON" = "8:"
+        "ARPPRODUCTICON" = "8:_FD0C4B5AEC444414A54658330E5F91CB"
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
@@ -1037,7 +1063,7 @@
                                                         {
                                                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_4CBE6A756F7B498480396E23C0912D91"
                                                             {
-                                                            "Name" = "8:MyApplication.VanillaAddIn.dll"
+                                                            "Name" = "8:HighLightNote.dll"
                                                             "Condition" = "8:"
                                                             "AlwaysCreate" = "11:FALSE"
                                                             "DeleteAtUninstall" = "11:TRUE"
@@ -1053,7 +1079,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:[TARGETDIR]MyApplication.VanillaAddIn.dll"
+                                                                    "Value" = "8:[TARGETDIR]HighLightNote.dll"
                                                                     }
                                                                 }
                                                             }
@@ -1101,7 +1127,7 @@
                                                         {
                                                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_F7AC1B508D9C4A8D812B74D423321C9B"
                                                             {
-                                                            "Name" = "8:MyApplication.VanillaAddIn"
+                                                            "Name" = "8:HighLightNote"
                                                             "Condition" = "8:"
                                                             "AlwaysCreate" = "11:FALSE"
                                                             "DeleteAtUninstall" = "11:TRUE"
@@ -1133,7 +1159,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:VanillaAddIn"
+                                                                    "Value" = "8:HighLightNote"
                                                                     }
                                                                 }
                                                             }
@@ -1301,7 +1327,7 @@
                                                         {
                                                             "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_121824829DF84978A1D4B30AF3468AC4"
                                                             {
-                                                            "Name" = "8:MyApplication.VanillaAddIn"
+                                                            "Name" = "8:HighLightNote"
                                                             "Condition" = "8:"
                                                             "AlwaysCreate" = "11:FALSE"
                                                             "DeleteAtUninstall" = "11:FALSE"
@@ -1317,7 +1343,7 @@
                                                                     "Condition" = "8:"
                                                                     "Transitive" = "11:FALSE"
                                                                     "ValueTypes" = "3:1"
-                                                                    "Value" = "8:"
+                                                                    "Value" = "8:HighLightNote"
                                                                     }
                                                                     "{ADCFDA98-8FDD-45E4-90BC-E3D20B029870}:_5A96DAB977D74828A0B14D69AFF62E2C"
                                                                     {
@@ -1440,7 +1466,7 @@
                                             "Condition" = "8:"
                                             "Transitive" = "11:FALSE"
                                             "ValueTypes" = "3:1"
-                                            "Value" = "8:MyApplication.VanillaAddIn"
+                                            "Value" = "8:HighLightNote"
                                             }
                                         }
                                     }
@@ -1514,7 +1540,7 @@
                                             "Condition" = "8:"
                                             "Transitive" = "11:FALSE"
                                             "ValueTypes" = "3:1"
-                                            "Value" = "8:MyApplication.VanillaAddIn.1"
+                                            "Value" = "8:HighLightNote.1"
                                             }
                                         }
                                     }
@@ -1568,7 +1594,7 @@
                     }
                     "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_716C060777B448F9AD2A0270AD2CB963"
                     {
-                    "Name" = "8:MyApplication.VanillaAddIn"
+                    "Name" = "8:HighLightNote"
                     "Condition" = "8:"
                     "AlwaysCreate" = "11:FALSE"
                     "DeleteAtUninstall" = "11:TRUE"
@@ -1593,7 +1619,7 @@
                                     "Condition" = "8:"
                                     "Transitive" = "11:FALSE"
                                     "ValueTypes" = "3:1"
-                                    "Value" = "8:MyApplication.VanillaAddIn.1"
+                                    "Value" = "8:HighLightNote.1"
                                     }
                                 }
                             }
@@ -1634,7 +1660,7 @@
                     }
                     "{60EA8692-D2D5-43EB-80DC-7906BF13D6EF}:_C57D5C2276C14FFFB597211BAA1352D4"
                     {
-                    "Name" = "8:MyApplication.VanillaAddIn.1"
+                    "Name" = "8:HighLightNote.1"
                     "Condition" = "8:"
                     "AlwaysCreate" = "11:FALSE"
                     "DeleteAtUninstall" = "11:TRUE"

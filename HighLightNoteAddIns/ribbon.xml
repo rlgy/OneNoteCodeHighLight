@@ -3,10 +3,10 @@
   <ribbon>
     <tabs>
       <tab idMso="TabInsert">
-        <group id="groupHighLightCode" label="HighLightCode">
+        <group id="groupHighLightCode" label="">
           <button id="buttonInsertCode" label="插入代码" size="large"
                   screentip="插入代码"
-                  onAction="onStart" image="HelloWorld.png" />
+                  onAction="onStart" image="Logo.png" />
         </group>
       </tab>
     </tabs>    

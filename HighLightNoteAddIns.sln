@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighLightCodeAddIns", "HighLightNoteAddIns\HighLightCodeAddIns.csproj", "{06F90638-AE24-439A-8FEB-B54ECED8DE62}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighLightNoteAddIns", "HighLightNoteAddIns\HighLightNoteAddIns.csproj", "{06F90638-AE24-439A-8FEB-B54ECED8DE62}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HighLightForm", "HighLightForm\HighLightForm.csproj", "{CD3D5648-CF5E-44F9-928C-2352247229C8}"
 EndProject

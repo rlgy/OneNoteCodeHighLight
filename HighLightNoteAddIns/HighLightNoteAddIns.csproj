@@ -82,7 +82,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\HelloWorld.png" />
+    <Content Include="Resources\Logo.png" />
     <Content Include="ribbon.xml" />
     <Content Include="self.ico" />
   </ItemGroup>
