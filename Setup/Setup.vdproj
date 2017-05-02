@@ -45,6 +45,18 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_1697CB8C03D04A24AFCF00F892FD1F1A"
+        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_1B8E39EE476E12789C8D9F52A8B054E0"
+        "OwnerKey" = "8:_2427AC79ADAA4F929E6625B015132B4E"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_227FC0ED18F14DA18158827B1C418752"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -89,6 +101,12 @@
         {
         "MsmKey" = "8:_6B2616F931BA4F17A5031FF31CEF486E"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_7CBE7B77FAC6132168ABE3408DA8D0C3"
+        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -178,13 +196,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
+        "OwnerKey" = "8:_2427AC79ADAA4F929E6625B015132B4E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_2427AC79ADAA4F929E6625B015132B4E"
+        "OwnerKey" = "8:_1697CB8C03D04A24AFCF00F892FD1F1A"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_1B8E39EE476E12789C8D9F52A8B054E0"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_E9AB059BD93B4FA9B7686261CABD9161"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -426,6 +456,68 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1697CB8C03D04A24AFCF00F892FD1F1A"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HighLightBuild, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_1697CB8C03D04A24AFCF00F892FD1F1A"
+                    {
+                    "Name" = "8:HighLightBuild.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HighLightBuild.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_76DE0C3E4C3C41398EBF2960C9F81C36"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_1B8E39EE476E12789C8D9F52A8B054E0"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:HighLightEngine, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+                "ScatterAssemblies"
+                {
+                    "_1B8E39EE476E12789C8D9F52A8B054E0"
+                    {
+                    "Name" = "8:HighLightEngine.dll"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:HighLightEngine.dll"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_76DE0C3E4C3C41398EBF2960C9F81C36"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_227FC0ED18F14DA18158827B1C418752"
             {
             "SourcePath" = "8:..\\HighLightForm\\highlight\\COPYING"
@@ -575,6 +667,26 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_7CBE7B77FAC6132168ABE3408DA8D0C3"
+            {
+            "SourcePath" = "8:HighLightNoteAddIns.tlb"
+            "TargetName" = "8:HighLightNoteAddIns.tlb"
+            "Tag" = "8:"
+            "Folder" = "8:_76DE0C3E4C3C41398EBF2960C9F81C36"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:2"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_8341F9A53C604E82B61DBF135D59ED10"
@@ -984,7 +1096,7 @@
         "Name" = "8:VanillaAddIn"
         "ProductName" = "8:HighLightNote"
         "ProductCode" = "8:{7F9BDBF9-BE92-4343-A3B2-549F676D25B8}"
-        "PackageCode" = "8:{E02D4EDB-14EA-42DC-AA9E-2F740DF5B857}"
+        "PackageCode" = "8:{8A2CD032-0427-4654-AE68-6E0D201AE0E4}"
         "UpgradeCode" = "8:{0025873C-20C5-48D6-A93A-FBD3891A9233}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
@@ -1741,7 +1853,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_391DD82DD54440D08D617744B5F95FC2"
                     {
                     "Sequence" = "3:110"
-                    "DisplayName" = "8:License Agreement"
+                    "DisplayName" = "8:许可协议"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdLicenseDlg.wid"
@@ -1788,7 +1900,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_49B8F2C0C7DA49B495048377BEC0FD07"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:欢迎使用"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdWelcomeDlg.wid"
@@ -1836,7 +1948,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5B5C462599F2482D9CB049C00CCB1A66"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:安装文件夹"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFolderDlg.wid"
@@ -1871,7 +1983,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_E5C7D73D26344ED9BB3C0D95004C4DD0"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:确认安装"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdConfirmDlg.wid"
@@ -1902,7 +2014,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_D0E01EB7B09942F1ABB4F0FA9BFEABBC"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:进度"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminProgressDlg.wid"
@@ -1946,7 +2058,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_A67B0F35C3204A6F92322EE1E557B384"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Progress"
+                    "DisplayName" = "8:进度"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdProgressDlg.wid"
@@ -1990,7 +2102,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_5B7B90719C384FCB8FABF158C9DE36E4"
                     {
                     "Sequence" = "3:300"
-                    "DisplayName" = "8:Confirm Installation"
+                    "DisplayName" = "8:确认安装"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminConfirmDlg.wid"
@@ -2012,7 +2124,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_BC4BF6DB7A2C43B0A985E36646594F03"
                     {
                     "Sequence" = "3:200"
-                    "DisplayName" = "8:Installation Folder"
+                    "DisplayName" = "8:安装文件夹"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFolderDlg.wid"
@@ -2034,7 +2146,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_DFD8898A1ED54C41BDC370A4AAE9ADCE"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Welcome"
+                    "DisplayName" = "8:欢迎使用"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminWelcomeDlg.wid"
@@ -2091,7 +2203,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_B92339A136B0428A9C4C7DCF290B0645"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:已完成"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdFinishedDlg.wid"
@@ -2141,7 +2253,7 @@
                     "{688940B3-5CA9-4162-8DEE-2993FA9D8CBC}:_6D2BE1FE6E914FB9BC8FDBD0017ACB8B"
                     {
                     "Sequence" = "3:100"
-                    "DisplayName" = "8:Finished"
+                    "DisplayName" = "8:已完成"
                     "UseDynamicProperties" = "11:TRUE"
                     "IsDependency" = "11:FALSE"
                     "SourcePath" = "8:<VsdDialogDir>\\VsdAdminFinishedDlg.wid"
