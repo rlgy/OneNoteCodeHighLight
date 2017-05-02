@@ -74,13 +74,15 @@ namespace HighLightNoteAddIns.Properties {
         ///   Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot; ?&gt;
         ///&lt;customUI xmlns=&quot;http://schemas.microsoft.com/office/2006/01/customui&quot; loadImage=&quot;GetImage&quot;&gt;
         ///  &lt;ribbon&gt;
-        ///    &lt;tabs id=&quot;tabCustom&quot; label=&quot;Custom&quot;&gt;
-        ///      &lt;group id=&quot;groupCode&quot; label=&quot;Code&quot;&gt;
-        ///        &lt;button id=&quot;buttonCode&quot; label=&quot;Code HighLight&quot; size=&quot;large&quot; 
-        ///                screentip=&quot;Press this for a &apos;Hello World!&apos; message&quot; 
-        ///                onAction=&quot;showHello&quot; image=&quot;HelloWorld.png&quot; /&gt;
-        ///      &lt;/group&gt;
-        ///    &lt;/tabs&gt;
+        ///    &lt;tabs&gt;
+        ///      &lt;tab idMso=&quot;TabInsert&quot;&gt;
+        ///        &lt;group id=&quot;groupHighLightCode&quot; label=&quot;HighLightCode&quot;&gt;
+        ///          &lt;button id=&quot;buttonInsertCode&quot; label=&quot;插入代码&quot; size=&quot;large&quot;
+        ///                  screentip=&quot;插入代码&quot;
+        ///                  onAction=&quot;onStart&quot; image=&quot;HelloWorld.png&quot; /&gt;
+        ///        &lt;/group&gt;
+        ///      &lt;/tab&gt;
+        ///    &lt;/tabs&gt;    
         ///  &lt;/ribbon&gt;
         ///&lt;/customUI&gt;.
         /// </summary>

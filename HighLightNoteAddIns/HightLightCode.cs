@@ -23,7 +23,8 @@ namespace HighLightNoteAddIns
 
 
     //{B2727A93-9C8E-412B-B6E6-4C836B358AFF}
-    [Guid("B2727A93-9C8E-412B-B6E6-4C836B358AFF"), ProgId("HighLightNoteAddIns.HighLightCode")]
+    [ComVisible(true)]
+    [Guid("D5ECCD00-CF2D-409B-B65A-BDBACB9F21DB"), ProgId("HighLightNoteAddIns")]
     public class HighLightCode : IDTExtensibility2, IRibbonExtensibility
     {
 
@@ -75,6 +76,10 @@ namespace HighLightNoteAddIns
             {
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.WorkingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+
+
+                //MessageBox.Show(info.WorkingDirectory);
+
                 info.FileName = "HighLightForm.exe";
                 info.Arguments = " " + fileName;
                 info.WindowStyle = ProcessWindowStyle.Normal;

@@ -135,6 +135,12 @@ namespace HighLightForm
 
         private void bt_insert_Click(object sender, EventArgs e)
         {
+            if(this.txtCode.Text=="")
+            {
+                this.Close();
+                return;
+            }
+
             IGenerateHighLight generate = new HighLightEngine.HighLightEngine();
 
             string outPutFileName = String.Empty;

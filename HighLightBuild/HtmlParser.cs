@@ -29,13 +29,13 @@ namespace HighLightBuild
                 _fileContent = File.ReadAllText(_fileName, Encoding.UTF8);
         }
 
-        public string[] LineCollect(out string fontColor,out string backgroundColor, out string font, out string size)
+        public string[] LineCollect(out string fontColor, out string backgroundColor, out string font, out string size)
         {
             fontColor = "#000000";
             backgroundColor = "#ffffff";
             font = "Consolas";
             size = "12";
-            
+
 
 
             string[] arrayLines = _fileContent.Split(new string[] { Environment.NewLine }, StringSplitOptions.None);
@@ -68,8 +68,23 @@ namespace HighLightBuild
             }
 
             //throw new Exception(font);
+            returnLines=returnLines.Where(n => !string.IsNullOrEmpty(n)).ToArray();
 
             return returnLines;
         }
+
+        public void FontColorAdd(ref string[] lines)
+        {
+            Regex r = new Regex(@"</ span>(.+)<span");
+            
+            for(int i=0; i < lines.Length; i++)
+            {
+                if (lines[i] != null)
+                {
+                    r.Replace(lines[i], "</ span><span style=\"color:\"></span><span");
+                }
+            }
+        }
+
     }
 }
