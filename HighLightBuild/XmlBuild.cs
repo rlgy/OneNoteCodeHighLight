@@ -10,7 +10,7 @@ namespace HighLightBuild
     public class XmlBuild
     {
         /// <summary>
-        /// html file path
+        /// html文件路径
         /// </summary>
         private string _fileName;
 
@@ -20,57 +20,63 @@ namespace HighLightBuild
         private string _fontColor;
 
         /// <summary>
-        /// code raea's background color
+        /// 代码区背景颜色
         /// </summary>
         private string _backgroundColor;
 
         /// <summary>
-        /// code font type
+        /// 代码字体
         /// </summary>
         private string _font;
 
         /// <summary>
-        /// code font size
+        /// 代码字体大小
         /// </summary>
         private string _size;
 
         private string _quickStyleIndex;
 
         /// <summary>
-        /// code line collection
+        /// 包含html内容的字符串数组，其每一个元素对应一行在OneNote中显示的代码
         /// </summary>
         private string[] _lines;
 
         /// <summary>
-        /// xml namespace
+        /// OneNote XML 的命名空间
         /// </summary>
         private XNamespace _ns;
 
-
+        /// <summary>
+        /// 构造函数
+        /// </summary>
+        /// <param name="fileName">highlight生成的html文件内容</param>
+        /// <param name="ns">OneNote XML 的命名空间</param>
         public XmlBuild(string fileName, XNamespace ns)
         {
             _fileName = fileName;
             _ns = ns;
-            //_lines = new string[100];
         }
 
         /// <summary>
         /// 调用htmlParser解析由highlight产生的html文件
         /// </summary>
-        /// <returns></returns>
+        /// <returns>返回-1代表初始化参数失败</returns>
         private int InitParam()
         {
             HtmlParser hp = new HtmlParser(_fileName);
 
             _lines = hp.LineCollect(out _fontColor, out _backgroundColor, out _font, out _size);
-
             if (_lines.Length <= 0)
                 return -1;
 
             return 0;
         }
 
-        private int XmlTableBuilding(out XElement Table)
+        /// <summary>
+        /// 生成需要插入OneNote XML中的XML节点
+        /// </summary>
+        /// <param name="Table">节点的名称</param>
+        private void XmlTableBuilding(out XElement Table)
         {
 
             Table = new XElement(_ns + "Table");
@@ -80,6 +86,7 @@ namespace HighLightBuild
             XElement Cell = new XElement(_ns + "Cell");
             XElement OEChildren = new XElement(_ns + "OEChildren");
 
+            //为Column添加两个基本属性
             Column.SetAttributeValue("index", "0");
             Column.SetAttributeValue("width", "0");
             Cell.SetAttributeValue("shadingColor", _backgroundColor);
@@ -96,13 +103,11 @@ namespace HighLightBuild
                 }
             }
 
-            //build
             Cell.Add(OEChildren);
             Row.Add(Cell);
             Columns.Add(Column);
             Table.Add(Columns);
             Table.Add(Row);
-            return 0;
         }
 
         /// <summary>
@@ -114,17 +119,6 @@ namespace HighLightBuild
         {
             if (InitParam() < 0)
                 throw new Exception("HtmlBuild Run Error");
-
-            //XElement OECollection = new XElement(_ns + "OEChildren");
-            //foreach (string line in _lines)
-            //{
-
-            //    if (line != null)
-            //    {
-            //        OECollection.Add(new XElement(_ns + "OE",
-            //        new XElement(_ns + "T", new XCData(line))));
-            //    }
-            //}
 
             //新建快速样式表
             //<one:QuickStyleDef 
@@ -154,17 +148,14 @@ namespace HighLightBuild
 
 
             XElement table = new XElement(_ns + "Table");
-            if (this.XmlTableBuilding(out table) < 0)
-                throw new Exception("Create table failed!");
-
+            this.XmlTableBuilding(out table);
+               
             XElement OE = new XElement(_ns + "OE");
             OE.Add(table);
             var pointFather = point.Ancestors(_ns + "OE").First();
 
 
             pointFather.AddBeforeSelf(OE);
-
-
         }
     }
 }

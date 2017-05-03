@@ -112,10 +112,6 @@ namespace HighLightNoteAddIns
 
         private void insertCodeToCurrentSide(string fileName)
         {
-            //string htmlContent = File.ReadAllText(fileName, Encoding.UTF8);
-
-
-
             string noteBookXml;
             onApp.GetHierarchy(null, HierarchyScope.hsPages, out noteBookXml);
 
