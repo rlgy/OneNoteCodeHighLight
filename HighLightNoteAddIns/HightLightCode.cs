@@ -77,8 +77,9 @@ namespace HighLightNoteAddIns
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.WorkingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 
-
-                //MessageBox.Show(info.WorkingDirectory);
+#if DEBUG
+                MessageBox.Show(info.WorkingDirectory);
+#endif
 
                 info.FileName = "HighLightForm.exe";
                 info.Arguments = " " + fileName;
@@ -152,16 +153,18 @@ namespace HighLightNoteAddIns
             {
                 return;
             }
-            //MessageBox.Show(pageNode.ToString());
-            //return;
+#if DEBUG
+            MessageBox.Show(pageNode.ToString());
+#endif
             try
             {
                 XmlBuild builder = new XmlBuild(fileName, _ns);
 
 
                 builder.XmlReBuilding(ref pageNode, ref pointNow);
-
-                //MessageBox.Show(pageNode.ToString());
+#if DEBUG
+                MessageBox.Show(pageNode.ToString());
+#endif
                 onApp.UpdatePageContent(pageNode.ToString(), DateTime.MinValue);
 
             }
