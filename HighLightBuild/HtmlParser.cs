@@ -31,7 +31,7 @@ namespace HighLightBuild
             if (File.Exists(_fileName))
                 _fileContent = File.ReadAllText(_fileName, Encoding.UTF8);
         }
-        
+
         /// <summary>
         /// 处理由highlight生成的html文件内容
         /// </summary>

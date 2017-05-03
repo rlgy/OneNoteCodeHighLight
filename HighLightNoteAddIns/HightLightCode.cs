@@ -69,9 +69,15 @@ namespace HighLightNoteAddIns
 
         }
 
+        /// <summary>
+        /// 插件入口
+        /// </summary>
+        /// <param name="control"></param>
         public void onStart(IRibbonControl control)
         {
             string fileName = Guid.NewGuid().ToString();
+
+            //调用HighLightForm程序，显示用户输入窗口，产生代码渲染后的html文件
             try
             {
                 ProcessStartInfo info = new ProcessStartInfo();
@@ -110,13 +116,17 @@ namespace HighLightNoteAddIns
             return new CCOMStreamWrapper(mem);
         }
 
+        /// <summary>
+        /// 插入代码到当前光标位置
+        /// </summary>
+        /// <param name="fileName">代码渲染后的文件位置</param>
         private void insertCodeToCurrentSide(string fileName)
         {
             string noteBookXml;
             onApp.GetHierarchy(null, HierarchyScope.hsPages, out noteBookXml);
 
             var doc = XDocument.Parse(noteBookXml);
-            _ns = doc.Root.Name.Namespace;
+            _ns = doc.Root.Name.Namespace;//获取OneNote XML文件的命名空间
 
             var pageNode = doc.Descendants(_ns + "Page")
                 .Where(n => n.Attribute("isCurrentlyViewed") != null && n.Attribute("isCurrentlyViewed").Value == "true")
@@ -125,11 +135,11 @@ namespace HighLightNoteAddIns
             string SelectedPageID = pageNode.Attribute("ID").Value;
 
             string SelectedPageContent;
+            //获取当前页面的XML内容
             onApp.GetPageContent(SelectedPageID, out SelectedPageContent, PageInfo.piSelection);
             var SelectedPageXml = XDocument.Parse(SelectedPageContent);
 
             pageNode = SelectedPageXml.Descendants(_ns + "Page").FirstOrDefault();
-            //pageNode.
             XElement pointNow = pageNode
                 .Descendants(_ns + "T").Where(n => n.Attribute("selected") != null && n.Attribute("selected").Value == "all")
                 .First();
@@ -154,9 +164,9 @@ namespace HighLightNoteAddIns
 #endif
             try
             {
+                //将html内容转化为XML内容
+                //更新当前页面的XML内容
                 XmlBuild builder = new XmlBuild(fileName, _ns);
-
-
                 builder.XmlReBuilding(ref pageNode, ref pointNow);
 #if DEBUG
                 MessageBox.Show(pageNode.ToString());

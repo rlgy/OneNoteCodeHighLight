@@ -149,7 +149,7 @@ namespace HighLightBuild
 
             XElement table = new XElement(_ns + "Table");
             this.XmlTableBuilding(out table);
-               
+
             XElement OE = new XElement(_ns + "OE");
             OE.Add(table);
             var pointFather = point.Ancestors(_ns + "OE").First();
