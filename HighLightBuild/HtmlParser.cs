@@ -68,22 +68,53 @@ namespace HighLightBuild
             }
 
             //throw new Exception(font);
-            returnLines=returnLines.Where(n => !string.IsNullOrEmpty(n)).ToArray();
+            returnLines = returnLines.Where(n => !string.IsNullOrEmpty(n)).ToArray();
+
+            for (int i = 0; i < returnLines.Length; i++)
+            {
+                if (HtmlParser.AddTagToWords(ref returnLines[i], "span", 0, "background-color:" + backgroundColor + "; color:" + fontColor) == -1)
+                    throw new Exception("Html Error");
+                //throw new Exception(returnLines[i]);
+            }
+
 
             return returnLines;
         }
 
-        public void FontColorAdd(ref string[] lines)
+        private static int AddTagToWords(ref string line, string tag, int start, string style)
         {
-            Regex r = new Regex(@"</ span>(.+)<span");
-            
-            for(int i=0; i < lines.Length; i++)
+            if (start == line.Length)
+                return 0;
+            int fstart;
+            int fend;
+
+            string tagStartT = "<{0}";
+            string tagStopT = "</{0}>";
+
+            string repleaseTagT = "<{0} style=\"{1}\">";
+
+            fstart = line.IndexOf(String.Format(tagStartT, tag), start);
+
+            if (fstart < 0)
             {
-                if (lines[i] != null)
-                {
-                    r.Replace(lines[i], "</ span><span style=\"color:\"></span><span");
-                }
+                line = line.Substring(0, start) + String.Format(repleaseTagT, tag, style)
+                    + line.Substring(start) + String.Format(tagStopT, tag);
             }
+            else if (fstart == start)
+            {
+                fend = line.IndexOf(String.Format(tagStopT, tag), start);
+                if (fend < 0)
+                    return -1;//html error
+                else
+                    start = fend + String.Format(tagStopT, tag).Length;
+            }
+            else if (fstart > start)
+            {
+                line = line.Substring(0, start) + String.Format(repleaseTagT, tag, style)
+                    + line.Substring(start, fstart - start) + String.Format(tagStopT, tag) + line.Substring(fstart);
+            }
+
+            return HtmlParser.AddTagToWords(ref line, tag, start, style);
         }
 
     }
