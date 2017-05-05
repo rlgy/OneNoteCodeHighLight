@@ -30,6 +30,10 @@ namespace HighLightForm
 
         private void CodeInputForm_Load(object sender, EventArgs e)
         {
+            //this.Text = "输入代码";
+            //this.MaximizeBox = false;
+            
+
             //添加控件元素
             string[] font_family = new string[2] { "Consolas", "Courier New" };//字体类型
             int[] font_size = new int[7] { 10, 11, 12, 13, 14, 15, 16 };//字体大小类型
