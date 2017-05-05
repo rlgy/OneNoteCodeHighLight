@@ -69,7 +69,11 @@ namespace HighLightForm
             this.txtCode.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy(this.CodeTypeTransform(this.cb_lang.Text));
             this.txtCode.Encoding = Encoding.UTF8;
 
+            //显示窗口
+            Rectangle screen = System.Windows.Forms.Screen.GetWorkingArea(this);
 
+            this.Location = new Point((screen.Width-this.Width)/2,(screen.Height-this.Height)/2);
+            //this.ShowDialog();
         }
 
         private void cx_lang_SelectedIndexChanged(object sender, EventArgs e)
