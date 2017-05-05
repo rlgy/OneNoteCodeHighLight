@@ -84,7 +84,7 @@ namespace HighLightNoteAddIns
                 info.WorkingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 
 #if DEBUG
-                MessageBox.Show(info.WorkingDirectory);
+                MessageBox.Show("工作目录：" + info.WorkingDirectory);
 #endif
 
                 info.FileName = "HighLightForm.exe";

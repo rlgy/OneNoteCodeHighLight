@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -33,6 +34,11 @@ namespace HighLightBuild
         /// 代码字体大小
         /// </summary>
         private string _size;
+
+        /// <summary>
+        /// 行数颜色
+        /// </summary>
+        private string _lineColor;
 
         private string _quickStyleIndex;
 
@@ -91,18 +97,54 @@ namespace HighLightBuild
             Column.SetAttributeValue("width", "0");
             Cell.SetAttributeValue("shadingColor", _backgroundColor);
 
-            foreach (string line in _lines)
+            //检测是否需要显示行号
+            Regex r = new Regex("<span style=\"color:(?<lineColor>[#0-9A-Za-z]{0,7})\">(?:[0-9]{2,})\\s+</span>");
+            Match m = r.Match(_lines[0]);
+            if (m.Success)
             {
+                _lineColor = m.Groups["lineColor"].Value;
 
-                if (line != null)
+                for (int i = 0; i < _lines.Length; i++)
                 {
-                    XElement OE = new XElement(_ns + "OE");
-                    OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
-                    OE.Add(new XElement(_ns + "T", new XCData(line)));
-                    OEChildren.Add(OE);
+                    if (_lines[i] != null)
+                    {
+                        XElement OE = new XElement(_ns + "OE");
+                        OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
+                        //行号以列表显示，方便代码的粘贴复制
+                        XElement List = new XElement(_ns + "List");
+                        XElement Number = new XElement(_ns + "Number");
+                        //< one:Number numberSequence = "0" numberFormat = "##." fontColor = "#0000FF" 
+                        //font = "Courier New" language = "2052" text = "1." />
+
+                        Number.SetAttributeValue("numberSequence", "22");
+                        Number.SetAttributeValue("numberFormat", "##");
+                        Number.SetAttributeValue("fontColor", _lineColor);
+                        Number.SetAttributeValue("font", _font);
+                        Number.SetAttributeValue("fontSize", _size);
+                        Number.SetAttributeValue("text", i + 1);
+                        List.Add(Number);
+
+                        OE.Add(List);
+                        OE.Add(new XElement(_ns + "T", new XCData(_lines[i].Substring(_lines[i].IndexOf("</span>") + "</span>".Length))));
+                        OEChildren.Add(OE);
+                    }
+                }
+
+            }
+            else
+            {
+                foreach (string line in _lines)
+                {
+
+                    if (line != null)
+                    {
+                        XElement OE = new XElement(_ns + "OE");
+                        OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
+                        OE.Add(new XElement(_ns + "T", new XCData(line)));
+                        OEChildren.Add(OE);
+                    }
                 }
             }
-
             Cell.Add(OEChildren);
             Row.Add(Cell);
             Columns.Add(Column);
@@ -145,6 +187,9 @@ namespace HighLightBuild
             QuickStyleDef.SetAttributeValue("spaceAfter", "0.0");
 
             qLast.AddAfterSelf(QuickStyleDef);
+
+
+
 
 
             XElement table = new XElement(_ns + "Table");
