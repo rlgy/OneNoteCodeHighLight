@@ -67,7 +67,8 @@ namespace HighLightBuild
                             font = outParam[4].Value;
                         }
                         int spanIndex = arrayLines[i].IndexOf("<span");
-                        returnLines[i] = arrayLines[i].Substring(spanIndex);
+                        if (spanIndex >= 0)
+                            returnLines[i] = arrayLines[i].Substring(spanIndex);
                     }
                 }
                 else if (arrayLines[i].IndexOf("<span") >= 0)

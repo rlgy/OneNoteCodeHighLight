@@ -83,9 +83,6 @@ namespace HighLightNoteAddIns
                 ProcessStartInfo info = new ProcessStartInfo();
                 info.WorkingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 
-#if DEBUG
-                MessageBox.Show("工作目录：" + info.WorkingDirectory);
-#endif
 
                 info.FileName = "HighLightForm.exe";
                 info.Arguments = " " + fileName;
@@ -159,18 +156,14 @@ namespace HighLightNoteAddIns
             {
                 return;
             }
-#if DEBUG
-            MessageBox.Show(pageNode.ToString());
-#endif
+
             try
             {
                 //将html内容转化为XML内容
                 //更新当前页面的XML内容
                 XmlBuild builder = new XmlBuild(fileName, _ns);
                 builder.XmlReBuilding(ref pageNode, ref pointNow);
-#if DEBUG
-                MessageBox.Show(pageNode.ToString());
-#endif
+
                 onApp.UpdatePageContent(pageNode.ToString(), DateTime.MinValue);
 
             }

@@ -102,32 +102,45 @@ namespace HighLightBuild
             Match m = r.Match(_lines[0]);
             if (m.Success)
             {
+
+                //修复BUG，该BUG导致一个特殊字符被插入OneNote代码区域的开头
+                int specialIdx = _lines[0].IndexOf("<span", 1);
+                if (specialIdx >= 0)
+                {
+                    int secIdx = _lines[0].IndexOf("<span", specialIdx + 1);
+                    if (secIdx >= 0)
+                        _lines[0] = _lines[0].Substring(0, specialIdx) + _lines[0].Substring(secIdx);
+                    else
+                        _lines[0] = _lines[0].Substring(0, specialIdx);
+                }
+
+
                 _lineColor = m.Groups["lineColor"].Value;
 
                 for (int i = 0; i < _lines.Length; i++)
                 {
-                    if (_lines[i] != null)
-                    {
-                        XElement OE = new XElement(_ns + "OE");
-                        OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
-                        //行号以列表显示，方便代码的粘贴复制
-                        XElement List = new XElement(_ns + "List");
-                        XElement Number = new XElement(_ns + "Number");
-                        //< one:Number numberSequence = "0" numberFormat = "##." fontColor = "#0000FF" 
-                        //font = "Courier New" language = "2052" text = "1." />
+                    //if (_lines[i] != null)
+                    //{
+                    XElement OE = new XElement(_ns + "OE");
+                    OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
+                    //行号以列表显示，方便代码的粘贴复制
+                    XElement List = new XElement(_ns + "List");
+                    XElement Number = new XElement(_ns + "Number");
+                    //< one:Number numberSequence = "0" numberFormat = "##." fontColor = "#0000FF" 
+                    //font = "Courier New" language = "2052" text = "1." />
 
-                        Number.SetAttributeValue("numberSequence", "22");
-                        Number.SetAttributeValue("numberFormat", "##");
-                        Number.SetAttributeValue("fontColor", _lineColor);
-                        Number.SetAttributeValue("font", _font);
-                        Number.SetAttributeValue("fontSize", _size);
-                        Number.SetAttributeValue("text", i + 1);
-                        List.Add(Number);
+                    Number.SetAttributeValue("numberSequence", "22");
+                    Number.SetAttributeValue("numberFormat", "##");
+                    Number.SetAttributeValue("fontColor", _lineColor);
+                    Number.SetAttributeValue("font", _font);
+                    Number.SetAttributeValue("fontSize", _size);
+                    Number.SetAttributeValue("text", i + 1);
+                    List.Add(Number);
 
-                        OE.Add(List);
-                        OE.Add(new XElement(_ns + "T", new XCData(_lines[i].Substring(_lines[i].IndexOf("</span>") + "</span>".Length))));
-                        OEChildren.Add(OE);
-                    }
+                    OE.Add(List);
+                    OE.Add(new XElement(_ns + "T", new XCData(_lines[i].Substring(_lines[i].IndexOf("</span>") + "</span>".Length))));
+                    OEChildren.Add(OE);
+                    //}
                 }
 
             }
@@ -187,10 +200,6 @@ namespace HighLightBuild
             QuickStyleDef.SetAttributeValue("spaceAfter", "0.0");
 
             qLast.AddAfterSelf(QuickStyleDef);
-
-
-
-
 
             XElement table = new XElement(_ns + "Table");
             this.XmlTableBuilding(out table);
