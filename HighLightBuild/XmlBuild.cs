@@ -86,6 +86,8 @@ namespace HighLightBuild
         {
 
             Table = new XElement(_ns + "Table");
+
+            //内容节点
             XElement Columns = new XElement(_ns + "Columns");
             XElement Column = new XElement(_ns + "Column");
             XElement Row = new XElement(_ns + "Row");
@@ -94,14 +96,22 @@ namespace HighLightBuild
 
             //为Column添加两个基本属性
             Column.SetAttributeValue("index", "0");
-            Column.SetAttributeValue("width", "0");
+            Column.SetAttributeValue("width", "520");
+            Column.SetAttributeValue("isLocked", "true");
             Cell.SetAttributeValue("shadingColor", _backgroundColor);
+
+
 
             //检测是否需要显示行号
             Regex r = new Regex("<span style=\"color:(?<lineColor>[#0-9A-Za-z]{0,7})\">(?:[0-9]{2,})\\s+</span>");
             Match m = r.Match(_lines[0]);
             if (m.Success)
             {
+                //为Column添加两个基本属性
+                Column.SetAttributeValue("index", "1");
+                Column.SetAttributeValue("width", "520");
+                Column.SetAttributeValue("isLocked", "true");
+                Cell.SetAttributeValue("shadingColor", _backgroundColor);
 
                 //修复BUG，该BUG导致一个特殊字符被插入OneNote代码区域的开头
                 int specialIdx = _lines[0].IndexOf("<span", 1);
@@ -114,6 +124,15 @@ namespace HighLightBuild
                         _lines[0] = _lines[0].Substring(0, specialIdx);
                 }
 
+                //添加行号列
+                XElement lineColumn = new XElement(_ns + "Column");
+                XElement lineCell = new XElement(_ns + "Cell");
+                XElement lineOEChildren = new XElement(_ns + "OEChildren");
+
+                lineColumn.SetAttributeValue("index", "0");
+                lineColumn.SetAttributeValue("width", "12");
+                Column.SetAttributeValue("isLocked", "true");
+                lineCell.SetAttributeValue("shadingColor", _backgroundColor);
 
                 _lineColor = m.Groups["lineColor"].Value;
 
@@ -121,28 +140,40 @@ namespace HighLightBuild
                 {
                     //if (_lines[i] != null)
                     //{
-                    XElement OE = new XElement(_ns + "OE");
-                    OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
                     //行号以列表显示，方便代码的粘贴复制
-                    XElement List = new XElement(_ns + "List");
-                    XElement Number = new XElement(_ns + "Number");
+                    //XElement List = new XElement(_ns + "List");
+                    //XElement Number = new XElement(_ns + "Number");
                     //< one:Number numberSequence = "0" numberFormat = "##." fontColor = "#0000FF" 
                     //font = "Courier New" language = "2052" text = "1." />
+                    //Number.SetAttributeValue("numberSequence", "22");
+                    //Number.SetAttributeValue("numberFormat", "##");
+                    //Number.SetAttributeValue("fontColor", _lineColor);
+                    //Number.SetAttributeValue("font", _font);
+                    //Number.SetAttributeValue("fontSize", _size);
+                    //Number.SetAttributeValue("text", i + 1);
+                    //List.Add(Number);
+                    XElement OE = new XElement(_ns + "OE");
+                    OE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
+                    XElement lineOE = new XElement(_ns + "OE");
+                    lineOE.SetAttributeValue("quickStyleIndex", _quickStyleIndex);
 
-                    Number.SetAttributeValue("numberSequence", "22");
-                    Number.SetAttributeValue("numberFormat", "##");
-                    Number.SetAttributeValue("fontColor", _lineColor);
-                    Number.SetAttributeValue("font", _font);
-                    Number.SetAttributeValue("fontSize", _size);
-                    Number.SetAttributeValue("text", i + 1);
-                    List.Add(Number);
-
-                    OE.Add(List);
-                    OE.Add(new XElement(_ns + "T", new XCData(_lines[i].Substring(_lines[i].IndexOf("</span>") + "</span>".Length))));
+                    int lineIdx = _lines[i].IndexOf("</span>") + "</span>".Length;
+                    OE.Add(new XElement(_ns + "T", new XCData(_lines[i].Substring(lineIdx))));
+                    lineOE.Add(new XElement(_ns + "T", new XCData(_lines[i].Substring(0,lineIdx))));
+                    //OE.Add(List);
                     OEChildren.Add(OE);
+                    lineOEChildren.Add(lineOE);
                     //}
                 }
+                
+                lineCell.Add(lineOEChildren);
+                Cell.Add(OEChildren);
 
+                Row.Add(lineCell);
+                Row.Add(Cell);
+
+                Columns.Add(lineColumn);
+                Columns.Add(Column);
             }
             else
             {
@@ -157,10 +188,11 @@ namespace HighLightBuild
                         OEChildren.Add(OE);
                     }
                 }
+                Cell.Add(OEChildren);
+                Row.Add(Cell);
+                Columns.Add(Column);
             }
-            Cell.Add(OEChildren);
-            Row.Add(Cell);
-            Columns.Add(Column);
+            
             Table.Add(Columns);
             Table.Add(Row);
         }
