@@ -15,7 +15,7 @@ using System.Xml.Linq;
 using System.Diagnostics;
 using System.Reflection;
 using HighLightBuild;
-
+using HighLightForm;
 
 namespace HighLightNoteAddIns
 {
@@ -29,6 +29,7 @@ namespace HighLightNoteAddIns
     {
 
         private XNamespace _ns;
+        private CodeInputForm _codeForm;
 
         Microsoft.Office.Interop.OneNote.Application onApp = new Microsoft.Office.Interop.OneNote.Application();
         //private object application;
@@ -78,28 +79,33 @@ namespace HighLightNoteAddIns
             string fileName = Guid.NewGuid().ToString();
 
             //调用HighLightForm程序，显示用户输入窗口，产生代码渲染后的html文件
-            try
-            {
-                ProcessStartInfo info = new ProcessStartInfo();
-                info.WorkingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            //try
+            //{
+            //    ProcessStartInfo info = new ProcessStartInfo();
+            //    info.WorkingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
 
 
-                info.FileName = "HighLightForm.exe";
-                info.Arguments = " " + fileName;
-                info.WindowStyle = ProcessWindowStyle.Normal;
+            //    info.FileName = "HighLightForm.exe";
+            //    info.Arguments = " " + fileName;
+            //    info.WindowStyle = ProcessWindowStyle.Normal;
 
-                Process p = new Process();
-                p.StartInfo = info;
-                p.Start();
-                p.WaitForInputIdle();
-                if (!p.HasExited)
-                    p.WaitForExit();
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("执行HighLightForm.exe出错：" + ex.Message);
-                return;
-            }
+            //    Process p = new Process();
+            //    p.StartInfo = info;
+            //    p.Start();
+            //    p.WaitForInputIdle();
+            //    if (!p.HasExited)
+            //        p.WaitForExit();
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show("执行HighLightForm.exe出错：" + ex.Message);
+            //    return;
+            //}
+            //启动窗口程序
+            string workDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location));
+            _codeForm = new CodeInputForm(fileName,workDirectory);
+            System.Windows.Forms.Application.Run(_codeForm);
+
             string outFileName = Path.Combine(Path.GetTempPath(), fileName + ".html");
 
             if (File.Exists(outFileName))

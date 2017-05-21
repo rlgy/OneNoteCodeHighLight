@@ -145,6 +145,10 @@
       <Project>{7869db57-e216-4c52-adde-000e88781d4e}</Project>
       <Name>HighLightBuild</Name>
     </ProjectReference>
+    <ProjectReference Include="..\HighLightForm\HighLightForm.csproj">
+      <Project>{cd3d5648-cf5e-44f9-928c-2352247229c8}</Project>
+      <Name>HighLightForm</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\Settings.settings">

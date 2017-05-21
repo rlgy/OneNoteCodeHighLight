@@ -20,7 +20,7 @@ namespace HighLightEngine
         public string content { get; set; }
         public bool showLineNumber { get; set; }
         public string fileName { get; set; }
-        private static HighLightSection _section = ConfigurationManager.GetSection("HighLightSection") as HighLightSection;
+        
         //private static HighLightSection _section;
         private void initParamer(HighLightParameter paramer)
         {
@@ -46,14 +46,19 @@ namespace HighLightEngine
 
             File.WriteAllText(inputFileName, this.content, Encoding.UTF8);
 
+            
+
             //调用highlight
-            var workingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),_section.FolderName);
+            //var workingDirectory = Path.Combine(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location),_section.FolderName);
+            string workingDirectory = "E:\\www\\visual studio\\HighLightNoteAddIns\\Build\\highlight\\";
+            
+
             ProcessStartInfo info = new ProcessStartInfo();
             info.WorkingDirectory = workingDirectory;
-            info.FileName = _section.ProcessName;
-            info.Arguments = " " + GenerateArguments(inputFileName, outputFileName);
+            info.FileName = "highlight.exe";
+            info.Arguments = " ";
             info.WindowStyle = ProcessWindowStyle.Hidden;
-            
+
 
             Process p = new Process();
             p.StartInfo = info;
@@ -68,50 +73,5 @@ namespace HighLightEngine
             File.Delete(inputFileName);
             return outputFileName;
         }
-        /// <summary> 产生HighLight.exe 参数 </summary>
-        private string GenerateArguments(string inputFileName, string outputFileName)
-        {
-            //HighLightSection _section = ConfigurationManager.GetSection("HighLightSection") as HighLightSection;
-            //HighLightSection _section = (HighLightSection)ConfigurationManager.GetSection("HighLightSection");
-            if (_section == null) throw new Exception("Config 内找不到 HighLightSection 区段");
-
-            StringBuilder sb = new StringBuilder();
-
-            ReadConfigCollection(sb, _section.GeneralArguments);
-            ReadConfigCollection(sb, _section.OutputArguments);
-
-            if (this.showLineNumber)
-                sb.Append(" " + _section.OutputArguments["LineNumbers"].Key);
-
-
-            string arguments = sb.ToString().TemplateSubstitute(new
-            {
-                inputFileName = String.Format("\"{0}\"", inputFileName),
-                outputFileName = String.Format("\"{0}\"", outputFileName),
-                lang = this.lang,
-                theme = this.theme,
-                font = String.Format("\"{0}\"", this.font),
-                size = this.size
-            });
-
-            return arguments;
-        }
-
-        /// <summary> 读取 ConfigurationElementCollection </summary>
-        private void ReadConfigCollection(StringBuilder sb, ConfigurationElementCollection collection)
-        {
-            foreach (Argument item in collection)
-            {
-                if (item.Option)
-                    continue;
-
-                sb.Append(item.Key);
-                if (!String.IsNullOrEmpty(item.Value))
-                    sb.Append(" " + item.Value);
-               
-                sb.Append(" ");
-            }
-        }
-
     }
 }

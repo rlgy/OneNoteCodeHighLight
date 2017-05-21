@@ -8,7 +8,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using ICSharpCode.TextEditor.Document;
 using HighLightEngine;
 
 
@@ -17,9 +16,12 @@ namespace HighLightForm
     public partial class CodeInputForm : Form
     {
         private string fileName;
-        public CodeInputForm(string fileName)
+        //程序工作目录
+        private string _workDirectory;
+        public CodeInputForm(string fileName,string workDirectory)
         {
             this.fileName = fileName;
+            this._workDirectory = workDirectory.TrimEnd("/\\".ToCharArray())+"\\";
             InitializeComponent();
         }
 
@@ -36,7 +38,7 @@ namespace HighLightForm
             int[] font_size = new int[7] { 10, 11, 12, 13, 14, 15, 16 };//字体大小类型
 
             //获取lang文件
-            string path = "./highlight/langDefs";
+            string path = this._workDirectory+"highlight\\langDefs";
             DirectoryInfo folder = new DirectoryInfo(path);
             foreach (FileInfo file in folder.GetFiles("*.lang"))
             {
@@ -45,7 +47,7 @@ namespace HighLightForm
             cb_lang.Text = Properties.Settings.Default.default_lang;
 
             //获取theme文件
-            path = "./highlight/themes";
+            path = this._workDirectory + "highlight\\themes";
             folder = new DirectoryInfo(path);
             foreach (FileInfo file in folder.GetFiles("*.theme"))
             {
@@ -66,22 +68,17 @@ namespace HighLightForm
 
             //是否显示行号
             cb_lineNumber.Checked = Properties.Settings.Default.default_showLineNum;
-
-            this.txtCode.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy(this.CodeTypeTransform(this.cb_lang.Text));
-            this.txtCode.Encoding = Encoding.UTF8;
-
+          
             //显示窗口
             Rectangle screen = System.Windows.Forms.Screen.GetWorkingArea(this);
 
             this.Location = new Point((screen.Width-this.Width)/2,(screen.Height-this.Height)/2);
-            //this.ShowDialog();
         }
 
         private void cx_lang_SelectedIndexChanged(object sender, EventArgs e)
         {
             Properties.Settings.Default.default_lang = (string)cb_lang.SelectedItem;
             Properties.Settings.Default.Save();
-            this.txtCode.Document.HighlightingStrategy = HighlightingStrategyFactory.CreateHighlightingStrategy(this.CodeTypeTransform(this.cb_lang.Text));
         }
 
 
@@ -108,29 +105,7 @@ namespace HighLightForm
             Properties.Settings.Default.default_showLineNum = cb_lineNumber.Checked;
             Properties.Settings.Default.Save();
         }
-        private string CodeTypeTransform(string codeType)
-        {
-            string result = string.Empty;
-            switch (codeType.ToLower())
-            {
-                case "csharp":
-                    result = "C#";
-                    break;
-                case "php":
-                    result = "PHP";
-                    break;
-                case "java":
-                    result = "Java";
-                    break;
-                case "c":
-                    result = "C++.NET";
-                    break;
-                default:
-                    result = "";
-                    break;
-            }
-            return result;
-        }
+        
 
         private void bt_clear_Click(object sender, EventArgs e)
         {
